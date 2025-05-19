@@ -10,6 +10,12 @@
 *.userosscache
 *.sln.docstates
 
+# postgress database
+postgres/
+
+# Docker
+docker-compose.override.yml
+
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
