@@ -6,12 +6,12 @@
 
         public async Task<DeleteOrderResult> Handle(DeleteOrderCommand command, CancellationToken cancellationToken)
         {
-            var orderId = OrderId.Of(command.OrderId.Value);
+            var orderId = OrderId.Of(command.OrderId);
             var order = await dbContext.Orders.FindAsync([orderId], cancellationToken);
             if (order is null)
             {
                 // Order not found, return failure result.
-                throw new OrderNotFoundException(id: command.OrderId.Value);
+                throw new OrderNotFoundException(id: command.OrderId);
             }
 
             dbContext.Orders.Remove(order);
